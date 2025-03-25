@@ -1,0 +1,440 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const exams = [
+  {
+    name: "UPSC Civil Services",
+    description: "Comprehensive preparation for India's premier civil service exam",
+    videoId: "sYpYAZQoQhM",
+    icon: "🏛️"
+  },
+  {
+    name: "SSC CGL",
+    description: "Staff Selection Commission Combined Graduate Level exam",
+    videoId: "6Z6DaL8J-lU",
+    icon: "📊"
+  },
+  {
+    name: "Banking Exams",
+    description: "IBPS, SBI PO and other banking sector exams",
+    videoId: "j9W0u8GZ7Y4",
+    icon: "🏦"
+  },
+  {
+    name: "State PSCs",
+    description: "Various state public service commission exams",
+    videoId: "8mJxpeIfjG0",
+    icon: "🏢"
+  }
+];
+
+const studyTips = [
+  {
+    title: "Structured Study Plan",
+    description: "Create a realistic timetable covering all subjects with regular revisions",
+    icon: "📅"
+  },
+  {
+    title: "Previous Year Papers",
+    description: "Solve at least 5 years' question papers to understand the pattern",
+    icon: "📝"
+  },
+  {
+    title: "Mock Tests",
+    description: "Take weekly full-length tests to improve speed and accuracy",
+    icon: "⏱️"
+  },
+  {
+    title: "Current Affairs",
+    description: "Daily newspaper reading and monthly current affairs compilation",
+    icon: "📰"
+  }
+];
+---
+
+<Layout title="Indian Government Exam Preparation">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Ace Your <span>Government Exams</span> with Expert Guidance</h1>
+          <p class="subtitle">Comprehensive preparation resources for UPSC, SSC, Banking and more</p>
+          <div class="cta-buttons">
+            <a href="#exams" class="btn-primary">Explore Exams</a>
+            <a href="#resources" class="btn-secondary">Free Resources</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-video">
+      <div class="container">
+        <h2>Today's Featured <span>Preparation Video</span></h2>
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src={`https://www.youtube.com/embed/${exams[0].videoId}`} 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="exams" class="exam-categories">
+      <div class="container">
+        <h2>Select Your <span>Exam Category</span></h2>
+        <p class="section-description">Choose your target exam to access curated preparation materials</p>
+        <div class="card-grid">
+          {exams.map((exam, index) => (
+            <Card
+              href={`#${exam.videoId}`}
+              title={exam.name}
+              body={exam.description}
+              icon={exam.icon}
+              style={`animation-delay: ${index * 0.1}s`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="study-tips">
+      <div class="container">
+        <h2>Effective <span>Study Strategies</span></h2>
+        <p class="section-description">Proven techniques to maximize your preparation efficiency</p>
+        <div class="tips-grid">
+          {studyTips.map((tip, index) => (
+            <div class="tip-card" style={`animation-delay: ${index * 0.1 + 0.4}s`}>
+              <div class="tip-icon">{tip.icon}</div>
+              <h3>{tip.title}</h3>
+              <p>{tip.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Get Weekly <span>Preparation Tips</span></h2>
+          <p>Subscribe to our newsletter for exam updates, study materials and strategy guides</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    flex: 1;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,0,0,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+    background-size: cover;
+    opacity: 0.1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: rgb(var(--primary));
+  }
+
+  /* Featured Video */
+  .featured-video {
+    padding: 4rem 0;
+    background: rgba(var(--primary-dark), 0.2);
+  }
+
+  .featured-video h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .featured-video h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.8s ease-out 0.2s both;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Exam Categories */
+  .exam-categories {
+    padding: 4rem 0;
+  }
+
+  .exam-categories h2,
+  .study-tips h2,
+  .newsletter h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .exam-categories h2 span,
+  .study-tips h2 span,
+  .newsletter h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.8;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Study Tips */
+  .study-tips {
+    padding: 4rem 0;
+    background: rgba(var(--primary-dark), 0.1);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tip-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.8s ease-out both;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+  }
+
+  .tip-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .tip-card h3 {
+    margin-bottom: 0.5rem;
+    color: rgb(var(--primary-light));
+  }
+
+  /* Newsletter */
+  .newsletter {
+    padding: 4rem 0;
+    background: var(--gradient);
+    color: white;
+  }
+
+  .newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter h2 {
+    color: white;
+  }
+
+  .newsletter p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .newsletter-form button {
+    padding: 0.75rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .featured-video h2,
+    .exam-categories h2,
+    .study-tips h2,
+    .newsletter h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Update video when card is clicked
+    const cards = document.querySelectorAll('.link-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const videoId = card.querySelector('a').getAttribute('href').substring(1);
+        const iframe = document.querySelector('.video-container iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        
+        // Update active card
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        
+        // Scroll to video section
+        document.querySelector('.featured-video').scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = e.target.querySelector('input').value;
+        alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter soon.`);
+        e.target.reset();
+      });
+    }
+
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.tip-card, .link-card');
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run once on load
+  });
+</script>

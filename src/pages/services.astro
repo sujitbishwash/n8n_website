@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const services = [
+  {
+    name: "Video Lectures",
+    description: "Comprehensive video courses covering all subjects and topics for each exam",
+    icon: "🎥"
+  },
+  {
+    name: "Study Materials",
+    description: "PDF notes, question banks, and syllabus breakdowns for focused preparation",
+    icon: "📚"
+  },
+  {
+    name: "Mock Tests",
+    description: "Full-length simulated exams with detailed performance analysis",
+    icon: "📝"
+  },
+  {
+    name: "Current Affairs",
+    description: "Daily news analysis and monthly compilations for GK preparation",
+    icon: "📰"
+  },
+  {
+    name: "Personalized Guidance",
+    description: "One-on-one mentorship from top rankers and subject experts",
+    icon: "👨‍🏫"
+  },
+  {
+    name: "Doubt Solving",
+    description: "24/7 access to expert educators for question clarification",
+    icon: "❓"
+  }
+];
+---
+
+<Layout title="Our Services | TeachMe">
+  <main>
+    <section class="services-hero">
+      <div class="container">
+        <h1>Our <span>Services</span></h1>
+        <p class="subtitle">Everything you need to ace your government exams in one place</p>
+      </div>
+    </section>
+
+    <section class="services-list">
+      <div class="container">
+        <div class="card-grid">
+          {services.map(service => (
+            <Card
+              href="#"
+              title={service.name}
+              body={service.description}
+              icon={service.icon}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <div class="container">
+        <h2>Simple, <span>Transparent Pricing</span></h2>
+        <p class="section-description">All our premium services are available at affordable rates</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Basic</h3>
+            <div class="price">Free</div>
+            <ul class="features">
+              <li>Access to all video lectures</li>
+              <li>Downloadable study materials</li>
+              <li>Weekly current affairs</li>
+              <li>Basic mock tests</li>
+            </ul>
+            <a href="#" class="btn-secondary">Current Plan</a>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="badge">Most Popular</div>
+            <h3>Premium</h3>
+            <div class="price">₹499<span>/month</span></div>
+            <ul class="features">
+              <li>Everything in Basic</li>
+              <li>Advanced mock test series</li>
+              <li>Personalized study plans</li>
+              <li>Priority doubt solving</li>
+              <li>Monthly mentorship sessions</li>
+            </ul>
+            <a href="#" class="btn-primary">Upgrade Now</a>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Elite</h3>
+            <div class="price">₹2999<span>/year</span></div>
+            <ul class="features">
+              <li>Everything in Premium</li>
+              <li>Unlimited mock tests</li>
+              <li>Weekly mentorship</li>
+              <li>Exam strategy sessions</li>
+              <li>Interview preparation</li>
+            </ul>
+            <a href="#" class="btn-secondary">Choose Plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .services-hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .services-hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .services-list {
+    padding: 4rem 0;
+  }
+
+  .pricing {
+    padding: 4rem 0;
+    background: rgba(var(--primary-dark), 0.1);
+  }
+
+  .pricing h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .pricing h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.8;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pricing-card.featured {
+    border: 1px solid rgb(var(--primary-light));
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(var(--primary), 0.2);
+  }
+
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: rgb(var(--secondary));
+    color: var(--dark);
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--primary-light));
+  }
+
+  .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .price span {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  .features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .features li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: rgb(var(--primary-light));
+  }
+
+  .pricing-card .btn-primary,
+  .pricing-card .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-card.featured {
+      transform: none;
+    }
+  }
+</style>

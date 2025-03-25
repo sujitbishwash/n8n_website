@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About TeachMe">
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1>About <span>TeachMe</span></h1>
+        <p class="subtitle">Empowering aspirants to achieve their government career dreams</p>
+      </div>
+    </section>
+
+    <section class="about-content">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2>Our Mission</h2>
+            <p>At TeachMe, we're dedicated to providing comprehensive, accessible, and high-quality preparation resources for all major Indian government examinations. Our platform was founded by a team of former civil servants and education experts who understand the challenges faced by aspirants.</p>
+            
+            <h2>What We Offer</h2>
+            <p>We curate the best study materials, video lectures, and practice tests from top educators across India. Our platform simplifies exam preparation by organizing content according to exam patterns and syllabus requirements.</p>
+            
+            <h2>Our Team</h2>
+            <p>Our team consists of subject matter experts, former exam toppers, and experienced educators who are passionate about helping students succeed. We continuously update our content to reflect the latest exam patterns and syllabus changes.</p>
+          </div>
+          <div class="about-image">
+            <div class="image-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>10,000+</h3>
+            <p>Active Users</p>
+          </div>
+          <div class="stat-card">
+            <h3>50+</h3>
+            <p>Exam Categories</p>
+          </div>
+          <div class="stat-card">
+            <h3>500+</h3>
+            <p>Video Lectures</p>
+          </div>
+          <div class="stat-card">
+            <h3>100%</h3>
+            <p>Free Resources</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .about-hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .about-hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .about-content {
+    padding: 4rem 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    margin: 2rem 0 1rem;
+    color: rgb

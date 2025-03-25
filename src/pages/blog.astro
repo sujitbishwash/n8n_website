@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: "How to Crack UPSC Prelims in First Attempt",
+    excerpt: "Learn the strategies that helped toppers clear UPSC prelims in their very first attempt.",
+    date: "May 15, 2023",
+    category: "UPSC",
+    readTime: "8 min read"
+  },
+  {
+    title: "SSC CGL Tier-2 Preparation Guide",
+    excerpt: "Comprehensive preparation strategy for the quantitative aptitude and English sections.",
+    date: "April 28, 2023",
+    category: "SSC",
+    readTime: "6 min read"
+  },
+  {
+    title: "Current Affairs Preparation for Banking Exams",
+    excerpt: "How to effectively prepare for current affairs section in IBPS and SBI exams.",
+    date: "April 10, 2023",
+    category: "Banking",
+    readTime: "5 min read"
+  },
+  {
+    title: "Time Management Tips for Government Exams",
+    excerpt: "Proven techniques to maximize your study efficiency and exam performance.",
+    date: "March 22, 2023",
+    category: "General",
+    readTime: "7 min read"
+  },
+  {
+    title: "State PSC Interview Preparation Guide",
+    excerpt: "What to expect and how to prepare for state public service commission interviews.",
+    date: "March 5, 2023",
+    category: "State PSC",
+    readTime: "10 min read"
+  },
+  {
+    title: "Best Books for RBI Grade B Preparation",
+    excerpt: "Recommended books and resources for each section of the RBI Grade B exam.",
+    date: "February 18, 2023",
+    category: "Banking",
+    readTime: "9 min read"
+  }
+];
+---
+
+<Layout title="Blog | ExamPrep India">
+  <main>
+    <section class="blog-hero">
+      <div class="container">
+        <h1>ExamPrep <span>Blog</span></h1>
+        <p class="subtitle">Latest tips, strategies and updates for government exam aspirants</p>
+      </div>
+    </section>
+
+    <section class="blog-content">
+      <div class="container">
+        <div class="blog-grid">
+          {posts.map(post => (
+            <article class="post-card">
+              <div class="post-meta">
+                <span class="category">{post.category}</span>
+                <span class="date">{post.date}</span>
+              </div>
+              <h2>{post.title}</h2>
+              <p class="excerpt">{post.excerpt}</p>
+              <div class="post-footer">
+                <span class="read-time">{post.readTime}</span>
+                <a href="#" class="read-more">Read More →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .blog-hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .blog-hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .blog-content {
+    padding: 4rem 0;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .post-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .category {
+    background: rgba(var(--primary), 0.2);
+    color: rgb(var(--primary-light));
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+  }
+
+  .post-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .excerpt {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+  .read-time {
+    opacity: 0.7;
+  }
+
+  .read-more {
+    color: rgb(var(--primary-light));
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .read-more:hover {
+    color: white;
+  }
+</style>

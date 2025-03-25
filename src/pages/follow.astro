@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Follow Us | TeachMe">
+  <main>
+    <section class="follow-hero">
+      <div class="container">
+        <h1>Follow <span>Us</span></h1>
+        <p class="subtitle">Stay updated with our latest content and announcements</p>
+      </div>
+    </section>
+
+    <section class="social-links">
+      <div class="container">
+        <h2>Connect With Us On <span>Social Media</span></h2>
+        <p class="section-description">Follow us for daily exam tips, updates, and exclusive content</p>
+        
+        <div class="social-grid">
+          <a href="https://facebook.com/teachme" class="social-card facebook" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">📘</div>
+            <h3>Facebook</h3>
+            <p>Daily exam tips and live Q&A sessions</p>
+          </a>
+          
+          <a href="https://twitter.com/teachme" class="social-card twitter" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">🐦</div>
+            <h3>Twitter</h3>
+            <p>Quick updates and exam notifications</p>
+          </a>
+          
+          <a href="https://instagram.com/teachme" class="social-card instagram" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">📷</div>
+            <h3>Instagram</h3>
+            <p>Visual study tips and motivational content</p>
+          </a>
+          
+          <a href="https://youtube.com/teachme" class="social-card youtube" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">▶️</div>
+            <h3>YouTube</h3>
+            <p>Free video lectures and exam strategies</p>
+          </a>
+          
+          <a href="https://linkedin.com/company/teachme" class="social-card linkedin" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">💼</div>
+            <h3>LinkedIn</h3>
+            <p>Career guidance and professional tips</p>
+          </a>
+          
+          <a href="https://telegram.me/teachme" class="social-card telegram" target="_blank" rel="noopener noreferrer">
+            <div class="social-icon">📨</div>
+            <h3>Telegram</h3>
+            <p>Daily current affairs and study materials</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .follow-hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .follow-hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .social-links {
+    padding: 4rem 0;
+  }
+
+  .social-links h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .social-links h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.8;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .social-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: white;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .social-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .social-card p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+  }
+
+  /* Platform-specific hover colors */
+  .facebook:hover {
+    background: rgba(66, 103, 178, 0.2);
+    border-color: rgba(66, 103, 178, 0.5);
+  }
+
+  .twitter:hover {
+    background: rgba(29, 161, 242, 0.2);
+    border-color: rgba(29, 161, 242, 0.5);
+  }
+
+  .instagram:hover {
+    background: rgba(225, 48, 108, 0.2);
+    border-color: rgba(225, 48, 108, 0.5);
+  }
+
+  .youtube:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.5);
+  }
+
+  .linkedin:hover {
+    background: rgba(0, 119, 181, 0.2);
+    border-color: rgba(0, 119, 181, 0.5);
+  }
+
+  .telegram:hover {
+    background: rgba(0, 136, 204, 0.2);
+    border-color: rgba(0, 136, 204, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .social-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

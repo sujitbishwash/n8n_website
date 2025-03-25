@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+  icon?: string;
+}
+
+const { href, title, body, icon } = Astro.props;
+---
+
+<li class="link-card">
+  <a href={href}>
+    {icon && <div class="card-icon">{icon}</div>}
+    <h2>
+      {title}
+      <span>&rarr;</span>
+    </h2>
+    <p>
+      {body}
+    </p>
+  </a>
+</li>
+
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 1px;
+    background-color: #23262d;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 12px;
+    background-position: 100%;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 100%;
+  }
+
+  .link-card > a {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+    background-color: #23262d;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2 span {
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-5px);
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 0.9rem;
+  }
+
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--gradient);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .link-card:is(:hover, :focus-within) h2 {
+    color: white;
+  }
+
+  .link-card:is(:hover, :focus-within) h2 span {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .link-card.active {
+    background-image: var(--gradient);
+  }
+
+  .link-card.active h2 {
+    color: white;
+  }
+</style>

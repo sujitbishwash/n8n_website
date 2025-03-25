@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    question: "Is ExamPrep India free to use?",
+    answer: "Yes, we offer a free tier with access to all our video lectures and basic study materials. We also have premium plans with additional features like advanced mock tests and personalized guidance."
+  },
+  {
+    question: "Which exams do you cover?",
+    answer: "We cover all major Indian government exams including UPSC Civil Services, SSC CGL, Banking (IBPS, SBI), State PSCs, RBI Grade B, and more. Our content is regularly updated to include new exams."
+  },
+  {
+    question: "How often is the content updated?",
+    answer: "We update our content monthly to reflect syllabus changes and exam pattern updates. Current affairs materials are updated daily."
+  },
+  {
+    question: "Can I access materials on mobile?",
+    answer: "Absolutely! Our platform is fully responsive and works on all devices including smartphones, tablets, and desktops."
+  },
+  {
+    question: "Do you provide doubt solving support?",
+    answer: "Yes, we offer 24/7 doubt solving for premium members through our dedicated educator team. Free members can post questions in our community forum."
+  },
+  {
+    question: "How do the mock tests work?",
+    answer: "Our mock tests simulate the actual exam environment with timed sections, detailed solutions, and performance analytics to help you identify strengths and weaknesses."
+  }
+];
+---
+
+<Layout title="FAQs | ExamPrep India">
+  <main>
+    <section class="faq-hero">
+      <div class="container">
+        <h1>Frequently Asked <span>Questions</span></h1>
+        <p class="subtitle">Find answers to common questions about our platform and services</p>
+      </div>
+    </section>
+
+    <section class="faq-content">
+      <div class="container">
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <details class="faq-item">
+              <summary>
+                <span>{faq.question}</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <div class="still-questions">
+          <h2>Still have questions?</h2>
+          <p>Can't find what you're looking for? Contact our support team for personalized assistance.</p>
+          <a href="/contact" class="btn-primary">Contact Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .faq-hero {
+    background: var(--gradient);
+    padding: 5rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .faq-hero h1 span {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .faq-content {
+    padding: 4rem 0;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .faq-answer p {
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  .still-questions {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .still-questions h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--primary-light));
+  }
+
+  .still-questions p {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .still-questions .btn-primary {
+    padding: 0.75rem 2rem;
+  }
+</style>

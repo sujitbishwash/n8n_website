@@ -6,38 +6,38 @@ const services = [
   {
     name: "Video Lectures",
     description: "Comprehensive video courses covering all subjects and topics for each exam",
-    icon: "🎥"
+    icon: ""
   },
   {
     name: "Study Materials",
     description: "PDF notes, question banks, and syllabus breakdowns for focused preparation",
-    icon: "📚"
+    icon: ""
   },
   {
     name: "Mock Tests",
     description: "Full-length simulated exams with detailed performance analysis",
-    icon: "📝"
+    icon: ""
   },
   {
     name: "Current Affairs",
     description: "Daily news analysis and monthly compilations for GK preparation",
-    icon: "📰"
+    icon: ""
   },
   {
     name: "Personalized Guidance",
     description: "One-on-one mentorship from top rankers and subject experts",
-    icon: "👨‍🏫"
+    icon: "‍"
   },
   {
     name: "Doubt Solving",
     description: "24/7 access to expert educators for question clarification",
-    icon: "❓"
+    icon: ""
   }
 ];
 ---
 
 <Layout title="Our Services | TeachMe">
-  <main>
+  <main class="services-page">
     <section class="services-hero">
       <div class="container">
         <h1>Our <span>Services</span></h1>
@@ -111,11 +111,23 @@ const services = [
 </Layout>
 
 <style>
+  .services-page {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+
   .services-hero {
     background: var(--gradient);
-    padding: 5rem 0;
+    padding: 6rem 0;
     color: white;
     text-align: center;
+  }
+
+  .services-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
   }
 
   .services-hero h1 span {
@@ -127,23 +139,34 @@ const services = [
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .services-list {
-    padding: 4rem 0;
+    padding-top: 2rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   .pricing {
     padding: 4rem 0;
     background: rgba(var(--primary-dark), 0.1);
+    border-radius: 20px;
+    margin-top: 2rem;
   }
 
   .pricing h2 {
     text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .pricing h2 span {
@@ -156,22 +179,25 @@ const services = [
   .section-description {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto 2rem;
-    opacity: 0.8;
+    margin: 0 auto 3rem;
+    font-size: 1.2rem;
+    opacity: 0.9;
   }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    margin-top: 3rem;
   }
 
   .pricing-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 2rem;
+    border-radius: 16px;
+    padding: 2.5rem;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .pricing-card.featured {
@@ -182,26 +208,26 @@ const services = [
 
   .badge {
     position: absolute;
-    top: -10px;
+    top: -12px;
     right: 20px;
     background: rgb(var(--secondary));
     color: var(--dark);
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1.25rem;
     border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: 700;
+    font-size: 0.9rem;
   }
 
   .pricing-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
     color: rgb(var(--primary-light));
   }
 
   .price {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     background: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
@@ -209,20 +235,21 @@ const services = [
   }
 
   .price span {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 400;
     opacity: 0.8;
   }
 
   .features {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .features li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+    font-size: 1.05rem;
   }
 
   .features li::before {
@@ -230,17 +257,28 @@ const services = [
     position: absolute;
     left: 0;
     color: rgb(var(--primary-light));
+    font-weight: bold;
   }
 
   .pricing-card .btn-primary,
   .pricing-card .btn-secondary {
     width: 100%;
     text-align: center;
-  }
+    padding: -1rem -1.5rem;
+    font-size -1.1rem;
+}
 
-  @media (max-width: 768px) {
-    .pricing-card.featured {
-      transform: none;
-    }
-  }
+@media (max-width -768px) {
+.services-hero {
+padding -4rem -0;}
+
+.services-hero h1 {
+font-size -2.5rem;}
+
+.pricing h2 {
+font-size -2rem;}
+
+.pricing-card.featured {
+transform -none;}
+}
 </style>

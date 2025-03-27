@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <section class="about-hero">
       <div class="container">
         <h1>About <span>TeachMe</span></h1>
-        <p class="subtitle">Empowering aspirants to achieve their government career dreams</p>
+        <p class="subtitle">Empowering students to achieve their academic and career goals</p>
       </div>
     </section>
 
@@ -16,16 +16,27 @@ import Layout from '../layouts/Layout.astro';
         <div class="about-grid">
           <div class="about-text">
             <h2>Our Mission</h2>
-            <p>At TeachMe, we're dedicated to providing comprehensive, accessible, and high-quality preparation resources for all major Indian government examinations. Our platform was founded by a team of former civil servants and education experts who understand the challenges faced by aspirants.</p>
+            <p>At TeachMe, we're revolutionizing education by making high-quality learning accessible to everyone. Our platform combines expert instruction with cutting-edge technology to create personalized learning experiences that help students excel in their studies and competitive exams.</p>
             
             <h2>What We Offer</h2>
-            <p>We curate the best study materials, video lectures, and practice tests from top educators across India. Our platform simplifies exam preparation by organizing content according to exam patterns and syllabus requirements.</p>
+            <p>We provide comprehensive learning resources including video lectures, interactive quizzes, and personalized study plans. Our content is carefully curated by subject matter experts and aligned with the latest exam patterns and syllabi.</p>
             
+            <h2>Our Approach</h2>
+            <p>TeachMe's unique methodology focuses on concept clarity, practical application, and regular assessment. We break down complex topics into digestible lessons and provide multiple learning pathways to accommodate different learning styles.</p>
+
             <h2>Our Team</h2>
-            <p>Our team consists of subject matter experts, former exam toppers, and experienced educators who are passionate about helping students succeed. We continuously update our content to reflect the latest exam patterns and syllabus changes.</p>
+            <p>Our team consists of IIT/IIM alumni, former civil servants, and experienced educators who are passionate about teaching. We continuously update our content based on student feedback and the latest educational research.</p>
           </div>
           <div class="about-image">
-            <div class="image-placeholder"></div>
+            <div class="image-container">
+              <div class="image-card">
+                <div class="image-overlay"></div>
+                <div class="image-content">
+                  <h3>Join Our Community</h3>
+                  <p>50,000+ students learning with us</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -48,7 +59,35 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div class="stat-card">
             <h3>100%</h3>
-            <p>Free Resources</p>
+            <p>Satisfaction Guarantee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="container">
+        <h2>Our Core <span>Values</span></h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">💡</div>
+            <h3>Excellence</h3>
+            <p>We maintain the highest standards in content quality and teaching methodology.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">❤️</div>
+            <h3>Integrity</h3>
+            <p>We're committed to ethical practices and transparent communication.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Innovation</h3>
+            <p>We continuously improve our platform with new features and teaching techniques.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h3>Accessibility</h3>
+            <p>We make quality education affordable and available to all students.</p>
           </div>
         </div>
       </div>
@@ -90,4 +129,142 @@ import Layout from '../layouts/Layout.astro';
 
   .about-text h2 {
     margin: 2rem 0 1rem;
-    color: rgb
+    color: rgb(var(--primary-light));
+  }
+
+  .about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .image-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-card {
+    background: rgba(var(--primary), 0.1);
+    border-radius: 12px;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid rgba(var(--primary), 0.3);
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(var(--primary-dark), 0.8), transparent);
+  }
+
+  .image-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    color: white;
+  }
+
+  .image-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .image-content p {
+    opacity: 0.9;
+  }
+
+  .stats {
+    background: rgba(var(--primary-dark), 0.1);
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .values {
+    padding: 4rem 0;
+  }
+
+  .values h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
+
+  .values h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .value-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--primary-light));
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .image-card {
+      height: 300px;
+    }
+  }
+</style>

@@ -4,28 +4,28 @@ import Card from '../components/Card.astro';
 
 const exams = [
   {
-    name: "UPSC Civil Services",
-    description: "Comprehensive preparation for India's premier civil service exam",
-    videoId: "sYpYAZQoQhM",
-    icon: "🏛️"
-  },
-  {
-    name: "SSC CGL",
-    description: "Staff Selection Commission Combined Graduate Level exam",
-    videoId: "6Z6DaL8J-lU",
-    icon: "📊"
-  },
-  {
-    name: "Banking Exams",
-    description: "IBPS, SBI PO and other banking sector exams",
+    name: "BANKS Exam",
+    description: "Comprehensive preparation for IBPS, SBI PO, and other banking sector recruitment exams",
     videoId: "j9W0u8GZ7Y4",
     icon: "🏦"
   },
   {
-    name: "State PSCs",
-    description: "Various state public service commission exams",
+    name: "Railways Exam",
+    description: "Specialized courses for RRB NTPC, Group D, and other railway recruitment board exams",
     videoId: "8mJxpeIfjG0",
-    icon: "🏢"
+    icon: "🚂"
+  },
+  {
+    name: "SSC Exam",
+    description: "Complete preparation for Staff Selection Commission exams including CGL, CHSL and more",
+    videoId: "6Z6DaL8J-lU",
+    icon: "📊"
+  },
+  {
+    name: "Class 10th (NCERT & ICSE)",
+    description: "Board exam preparation with comprehensive syllabus coverage for both NCERT and ICSE boards",
+    videoId: "sYpYAZQoQhM",
+    icon: "📚"
   }
 ];
 
@@ -59,7 +59,7 @@ const studyTips = [
       <div class="container">
         <div class="hero-content">
           <h1>Ace Your <span>Government Exams</span> with Expert Guidance</h1>
-          <p class="subtitle">Comprehensive preparation resources for UPSC, SSC, Banking and more</p>
+          <p class="subtitle">Comprehensive preparation resources for Banking, Railways, SSC and more</p>
           <div class="cta-buttons">
             <a href="#exams" class="btn-primary">Explore Exams</a>
             <a href="#resources" class="btn-secondary">Free Resources</a>
@@ -134,19 +134,37 @@ const studyTips = [
 </Layout>
 
 <style>
-  main {
-    flex: 1;
+  /* New Animation Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 
-  /* Hero Section */
+  @keyframes gradientPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes scaleIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
   .hero {
-    background: var(--gradient);
-    padding: 5rem 0;
-    color: white;
+    background: linear-gradient(135deg, rgba(var(--primary-dark), 0.8), rgba(var(--darker), 0.9)), 
+                url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1470&auto=format&fit=crop') center/cover;
+    padding: 6rem 0;
     text-align: center;
+    color: white;
     position: relative;
     overflow: hidden;
-    animation: fadeIn 0.8s ease-out;
+    animation: scaleIn 1s ease-out;
   }
 
   .hero::before {
@@ -156,74 +174,72 @@ const studyTips = [
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,0,0,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-    background-size: cover;
-    opacity: 0.1;
+    background: linear-gradient(135deg, rgba(var(--primary), 0.2), rgba(var(--secondary), 0.2));
+    background-size: 200% 200%;
+    animation: gradientPulse 15s ease infinite;
+    z-index: 1;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 1;
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 
   .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.2;
-    animation: fadeIn 0.8s ease-out;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .hero h1 span {
-    background: white;
+    background: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-weight: 800;
+    display: inline-block;
   }
 
   .subtitle {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-    animation: fadeIn 0.8s ease-out 0.2s both;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
   .cta-buttons {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
-    animation: fadeIn 0.8s ease-out 0.4s both;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
   .btn-secondary {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 50px;
     font-weight: 600;
     transition: var(--transition);
-    border: 2px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .btn-secondary:hover {
-    background: white;
-    color: rgb(var(--primary));
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
   }
 
-  /* Featured Video */
   .featured-video {
     padding: 4rem 0;
-    background: rgba(var(--primary-dark), 0.2);
+    background: rgba(var(--darker), 0.8);
   }
 
   .featured-video h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
-    animation: fadeIn 0.8s ease-out;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .featured-video h2 span {
@@ -240,7 +256,13 @@ const studyTips = [
     overflow: hidden;
     border-radius: 12px;
     box-shadow: var(--shadow);
-    animation: fadeIn 0.8s ease-out 0.2s both;
+    transform: perspective(1000px) rotateX(0deg);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .video-container:hover {
+    transform: perspective(1000px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .video-container iframe {
@@ -252,23 +274,20 @@ const studyTips = [
     border: none;
   }
 
-  /* Exam Categories */
   .exam-categories {
     padding: 4rem 0;
+    background: rgba(var(--dark), 0.8);
   }
 
   .exam-categories h2,
-  .study-tips h2,
-  .newsletter h2 {
+  .study-tips h2 {
     text-align: center;
     margin-bottom: 1rem;
-    font-size: 2rem;
-    animation: fadeIn 0.8s ease-out;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .exam-categories h2 span,
-  .study-tips h2 span,
-  .newsletter h2 span {
+  .study-tips h2 span {
     background: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
@@ -277,10 +296,10 @@ const studyTips = [
 
   .section-description {
     text-align: center;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 2rem;
     opacity: 0.8;
-    animation: fadeIn 0.8s ease-out 0.2s both;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
   .card-grid {
@@ -289,7 +308,6 @@ const studyTips = [
     gap: 1.5rem;
   }
 
-  /* Study Tips */
   .study-tips {
     padding: 4rem 0;
     background: rgba(var(--primary-dark), 0.1);
@@ -303,22 +321,24 @@ const studyTips = [
 
   .tip-card {
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2rem;
     transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: fadeIn 0.8s ease-out both;
+    animation: fadeIn 0.8s ease-out;
+    transform-style: preserve-3d;
   }
 
   .tip-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) rotateY(5deg);
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
   .tip-icon {
     font-size: 2rem;
     margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
   }
 
   .tip-card h3 {
@@ -326,52 +346,57 @@ const studyTips = [
     color: rgb(var(--primary-light));
   }
 
-  /* Newsletter */
   .newsletter {
     padding: 4rem 0;
-    background: var(--gradient);
-    color: white;
-  }
-
-  .newsletter-content {
-    max-width: 600px;
-    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(var(--primary-dark), 0.8), rgba(var(--darker), 0.9));
     text-align: center;
   }
 
   .newsletter h2 {
-    color: white;
+    margin-bottom: 1rem;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .newsletter h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .newsletter p {
-    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
     opacity: 0.9;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
   .newsletter-form {
     display: flex;
+    max-width: 500px;
+    margin: 0 auto;
     gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
   .newsletter-form input {
     flex: 1;
-    min-width: 250px;
     padding: 0.75rem 1rem;
     border-radius: 50px;
     border: none;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
+    outline: none;
+    transition: var(--transition);
+  }
+
+  .newsletter-form input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
   }
 
   .newsletter-form input::placeholder {
     color: rgba(255, 255, 255, 0.7);
-  }
-
-  .newsletter-form button {
-    padding: 0.75rem 2rem;
   }
 
   @media (max-width: 768px) {
@@ -379,62 +404,13 @@ const studyTips = [
       font-size: 2.2rem;
     }
 
-    .featured-video h2,
-    .exam-categories h2,
-    .study-tips h2,
-    .newsletter h2 {
-      font-size: 1.8rem;
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
     }
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Update video when card is clicked
-    const cards = document.querySelectorAll('.link-card');
-    
-    cards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        const videoId = card.querySelector('a').getAttribute('href').substring(1);
-        const iframe = document.querySelector('.video-container iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        
-        // Update active card
-        cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        
-        // Scroll to video section
-        document.querySelector('.featured-video').scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Newsletter form submission
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = e.target.querySelector('input').value;
-        alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter soon.`);
-        e.target.reset();
-      });
-    }
-
-    // Animate elements when they come into view
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.tip-card, .link-card');
-      elements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }
-      });
-    };
-
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Run once on load
-  });
-</script>

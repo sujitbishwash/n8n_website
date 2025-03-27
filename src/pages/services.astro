@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 
-const services = [
+const features = [
   {
     name: "Video Lectures",
     description: "Comprehensive video courses covering all subjects and topics for each exam",
@@ -29,81 +29,33 @@ const services = [
     icon: "‍"
   },
   {
-    name: "Doubt Solving",
-    description: "24/7 access to expert educators for question clarification",
+    name: "Railways Exam Prep",
+    description: "Specialized courses and materials for RRB NTPC, Group D, and other railway exams",
     icon: ""
   }
 ];
 ---
 
-<Layout title="Our Services | TeachMe">
-  <main class="services-page">
-    <section class="services-hero">
+<Layout title="Our Features | TeachMe">
+  <main class="features-page">
+    <section class="features-hero">
       <div class="container">
-        <h1>Our <span>Services</span></h1>
+        <h1>Our <span>Features</span></h1>
         <p class="subtitle">Everything you need to ace your government exams in one place</p>
       </div>
     </section>
 
-    <section class="services-list">
+    <section class="features-list">
       <div class="container">
         <div class="card-grid">
-          {services.map(service => (
+          {features.map(feature => (
             <Card
               href="#"
-              title={service.name}
-              body={service.description}
-              icon={service.icon}
+              title={feature.name}
+              body={feature.description}
+              icon={feature.icon}
             />
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="pricing">
-      <div class="container">
-        <h2>Simple, <span>Transparent Pricing</span></h2>
-        <p class="section-description">All our premium services are available at affordable rates</p>
-        
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>Basic</h3>
-            <div class="price">Free</div>
-            <ul class="features">
-              <li>Access to all video lectures</li>
-              <li>Downloadable study materials</li>
-              <li>Weekly current affairs</li>
-              <li>Basic mock tests</li>
-            </ul>
-            <a href="#" class="btn-secondary">Current Plan</a>
-          </div>
-
-          <div class="pricing-card featured">
-            <div class="badge">Most Popular</div>
-            <h3>Premium</h3>
-            <div class="price">₹499<span>/month</span></div>
-            <ul class="features">
-              <li>Everything in Basic</li>
-              <li>Advanced mock test series</li>
-              <li>Personalized study plans</li>
-              <li>Priority doubt solving</li>
-              <li>Monthly mentorship sessions</li>
-            </ul>
-            <a href="#" class="btn-primary">Upgrade Now</a>
-          </div>
-
-          <div class="pricing-card">
-            <h3>Elite</h3>
-            <div class="price">₹2999<span>/year</span></div>
-            <ul class="features">
-              <li>Everything in Premium</li>
-              <li>Unlimited mock tests</li>
-              <li>Weekly mentorship</li>
-              <li>Exam strategy sessions</li>
-              <li>Interview preparation</li>
-            </ul>
-            <a href="#" class="btn-secondary">Choose Plan</a>
-          </div>
         </div>
       </div>
     </section>
@@ -111,26 +63,26 @@ const services = [
 </Layout>
 
 <style>
-  .services-page {
+  .features-page {
     display: flex;
     flex-direction: column;
     gap: 4rem;
     padding-bottom: 4rem;
   }
 
-  .services-hero {
+  .features-hero {
     background: var(--gradient);
     padding: 6rem 0;
     color: white;
     text-align: center;
   }
 
-  .services-hero h1 {
+  .features-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
 
-  .services-hero h1 span {
+  .features-hero h1 span {
     background: white;
     -webkit-background-clip: text;
     background-clip: text;
@@ -145,7 +97,7 @@ const services = [
     margin: 0 auto;
   }
 
-  .services-list {
+  .features-list {
     padding-top: 2rem;
   }
 
@@ -156,129 +108,13 @@ const services = [
     margin-top: 2rem;
   }
 
-  .pricing {
-    padding: 4rem 0;
-    background: rgba(var(--primary-dark), 0.1);
-    border-radius: 20px;
-    margin-top: 2rem;
+  @media (max-width: 768px) {
+    .features-hero {
+      padding: 4rem 0;
+    }
+    
+    .features-hero h1 {
+      font-size: 2.5rem;
+    }
   }
-
-  .pricing h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-  }
-
-  .pricing h2 span {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .section-description {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-  }
-
-  .pricing-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 2.5rem;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .pricing-card.featured {
-    border: 1px solid rgb(var(--primary-light));
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(var(--primary), 0.2);
-  }
-
-  .badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: rgb(var(--secondary));
-    color: var(--dark);
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
-
-  .pricing-card h3 {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-    color: rgb(var(--primary-light));
-  }
-
-  .price {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .price span {
-    font-size: 1.25rem;
-    font-weight: 400;
-    opacity: 0.8;
-  }
-
-  .features {
-    list-style: none;
-    margin-bottom: 2.5rem;
-  }
-
-  .features li {
-    margin-bottom: 1rem;
-    position: relative;
-    padding-left: 2rem;
-    font-size: 1.05rem;
-  }
-
-  .features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: rgb(var(--primary-light));
-    font-weight: bold;
-  }
-
-  .pricing-card .btn-primary,
-  .pricing-card .btn-secondary {
-    width: 100%;
-    text-align: center;
-    padding: -1rem -1.5rem;
-    font-size -1.1rem;
-}
-
-@media (max-width -768px) {
-.services-hero {
-padding -4rem -0;}
-
-.services-hero h1 {
-font-size -2.5rem;}
-
-.pricing h2 {
-font-size -2rem;}
-
-.pricing-card.featured {
-transform -none;}
-}
 </style>

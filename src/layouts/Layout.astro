@@ -2,13 +2,37 @@
 interface Props {
   title: string;
 }
-
-const { title } = Astro.props;
+const { title = "AI Padhai" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "r237qmr3lh");
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZXXH00K27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5ZXXH00K27');
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZXXH00K27"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5ZXXH00K27');
+</script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -35,17 +59,26 @@ const { title } = Astro.props;
     </style>
   </head>
   <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVJSH84M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Google analitics (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5ZXXH00K27"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google analitics (noscript) -->
     <header class="glass-header">
       <div class="container">
         <div class="logo">
           <a href="/">
-            <h1>Teach<span>Me</span></h1>
+            <h1>AI <span>Padhai</span></h1>
           </a>
         </div>
         <nav>
           <a href="/">Home</a>
           <a href="/services">Services</a>
           <a href="/blog">Blog</a>
+					<a href="/aipanel">AIPanel</a>
           <a href="/contact">Contact</a>
           <a href="/login" class="btn-primary">Login</a>
         </nav>
@@ -56,7 +89,7 @@ const { title } = Astro.props;
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <h2>Teach<span>Me</span></h2>
+            <h2>AI <span>Padhai</span></h2>
             <p>Your gateway to government career success</p>
           </div>
           <div class="footer-links">
@@ -96,7 +129,7 @@ const { title } = Astro.props;
           </div>
         </div>
         <div class="copyright">
-          <p>© {new Date().getFullYear()} TeachMe. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} AI Padhai. All rights reserved.</p>
         </div>
       </div>
     </footer>

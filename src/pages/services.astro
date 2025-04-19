@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 
-const features = [
+const studentFeatures = [
   {
     name: "Video Lectures",
     description: "Comprehensive video courses covering all subjects and topics for each exam",
@@ -23,32 +23,76 @@ const features = [
     description: "Daily news analysis and monthly compilations for GK preparation",
     icon: ""
   },
+];
+
+const teacherFeatures = [
   {
     name: "Personalized Guidance",
     description: "One-on-one mentorship from top rankers and subject experts",
-    icon: "‍"
+    icon: ""
   },
   {
     name: "Railways Exam Prep",
     description: "Specialized courses and materials for RRB NTPC, Group D, and other railway exams",
     icon: ""
-  }
+  },
 ];
 ---
 
-<Layout title="Our Features | TeachMe">
-  <main class="features-page">
-    <section class="features-hero">
-      <div class="container">
-        <h1>Our <span>Features</span></h1>
-        <p class="subtitle">Everything you need to ace your government exams in one place</p>
+<Layout title="Our Features | AI Padhai">
+  <main class="features-page" x-data="{ tab: '' }">
+    
+    <!-- Stylish Tab Cards -->
+    <section class="tab-card-section">
+      <div class="tab-card-grid container">
+        <div
+          class="tab-card"
+          :class="{ active: tab === 'student' }"
+          @click="tab = 'student'"
+        >
+          <h2>🎓 Student</h2>
+          <p>Access lectures, mock tests, and study materials</p>
+        </div>
+        <div
+          class="tab-card"
+          :class="{ active: tab === 'teacher' }"
+          @click="tab = 'teacher'"
+        >
+          <h2>👩‍🏫 Teacher</h2>
+          <p>Empower your students and access tools for teaching</p>
+        </div>
       </div>
     </section>
 
-    <section class="features-list">
+    <!-- Dynamic Heading -->
+    <section class="features-hero" x-show="tab !== ''">
+      <div class="container">
+        <h1 x-text="tab === 'student' ? 'Student Features' : 'Teacher Features'"></h1>
+        <p class="subtitle" x-text="tab === 'student' ? 'Everything you need to ace your government exams in one place' : 'Empowerment tools and insights to teach better and reach more students'"></p>
+      </div>
+    </section>
+
+    <!-- Student Section -->
+    <section class="features-list" x-show="tab === 'student'">
       <div class="container">
         <div class="card-grid">
-          {features.map(feature => (
+          {studentFeatures.map(feature => (
+            <Card
+              href="#"
+              title={feature.name}
+              body={feature.description}
+              icon={feature.icon}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Teacher Section -->
+    <section class="features-list" x-show="tab === 'teacher'">
+      <div class="container">
+        <div class="card-grid">
+          {teacherFeatures.map(feature => (
             <Card
               href="#"
               title={feature.name}
@@ -62,6 +106,9 @@ const features = [
   </main>
 </Layout>
 
+<!-- Alpine.js -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 <style>
   .features-page {
     display: flex;
@@ -70,8 +117,52 @@ const features = [
     padding-bottom: 4rem;
   }
 
+  .tab-card-section {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .tab-card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    max-width: 280px;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .tab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .tab-card.active {
+    border-color: #0070f3;
+    box-shadow: 0 12px 28px rgba(0, 112, 243, 0.2);
+  }
+
+  .tab-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tab-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+
   .features-hero {
-    background: var(--gradient);
+    background: var(--gradient, linear-gradient(135deg, #0070f3, #00c6ff));
     padding: 6rem 0;
     color: white;
     text-align: center;
@@ -80,14 +171,6 @@ const features = [
   .features-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-  }
-
-  .features-hero h1 span {
-    background: white;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
   }
 
   .subtitle {
@@ -109,12 +192,28 @@ const features = [
   }
 
   @media (max-width: 768px) {
+    .tab-card-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+
     .features-hero {
       padding: 4rem 0;
     }
-    
+
     .features-hero h1 {
       font-size: 2.5rem;
     }
   }
+.tab-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #222; /* Ensure it's visible */
+}
+
+.tab-card p {
+  font-size: 1rem;
+  color: #555; /* Ensure it's visible */
+}
+
 </style>

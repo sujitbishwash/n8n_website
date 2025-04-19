@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<Layout title="AI Panel | AI Padhai">
+  <main class="ai-panel-page">
+    <section class="ai-tabs">
+      <div class="container">
+        <div class="bg-blob"></div>
+
+        <h1 class="panel-heading">Meet Your Smart AI Companion</h1>
+        <p class="panel-subtitle">Designed to empower <strong>Students</strong> and <strong>Teachers</strong> with personalized, AI-driven support 🤖✨</p>
+
+        <div class="tab-buttons">
+          <div class="tab-card" id="student-tab">
+            <img src="/student.svg" alt="AI for Student" class="tab-icon"/>
+            <h2>Student</h2>
+            <p>Your Personal Study Mentor</p>
+          </div>
+          <div class="tab-card" id="teacher-tab">
+            <img src="/teacher.svg" alt="AI for Teacher" class="tab-icon"/>
+            <h2>Teacher</h2>
+            <p>Your Smart Teaching Assistant</p>
+          </div>
+        </div>
+
+        <div id="student-content" class="tab-content hidden">
+          <h2>AI for Students</h2>
+          <ul class="ai-bubbles">
+            <li><strong>AI:</strong> I've created a personalized study plan for you based on your recent mock test results 📊</li>
+            <li><strong>You:</strong> Can you help me revise Photosynthesis quickly?</li>
+            <li><strong>AI:</strong> Absolutely! Here’s a 5-minute recap + flashcards 🌿</li>
+            <li><strong>AI:</strong> Feeling ready? Try this timed quiz to boost confidence ⏱️</li>
+          </ul>
+        </div>
+
+        <div id="teacher-content" class="tab-content hidden">
+          <h2>AI for Teachers</h2>
+          <ul class="ai-bubbles">
+            <li><strong>AI:</strong> Generated a quiz for Class 9 History: “Freedom Struggle” 📜</li>
+            <li><strong>You:</strong> Any insights on student engagement this week?</li>
+            <li><strong>AI:</strong> 72% students completed homework early. Engagement trend is up 📈</li>
+            <li><strong>AI:</strong> Need next week’s lesson plan? Ready when you are 📅</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    const studentTab = document.getElementById('student-tab');
+    const teacherTab = document.getElementById('teacher-tab');
+    const studentContent = document.getElementById('student-content');
+    const teacherContent = document.getElementById('teacher-content');
+
+    function reset() {
+      studentTab.classList.remove('active');
+      teacherTab.classList.remove('active');
+      studentContent.classList.add('hidden');
+      teacherContent.classList.add('hidden');
+    }
+
+    studentTab.addEventListener('click', () => {
+      reset();
+      studentTab.classList.add('active');
+      studentContent.classList.remove('hidden');
+    });
+
+    teacherTab.addEventListener('click', () => {
+      reset();
+      teacherTab.classList.add('active');
+      teacherContent.classList.remove('hidden');
+    });
+  </script>
+</Layout>
+
+<style>
+  * {
+    transition: all 0.3s ease;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .ai-panel-page {
+    position: relative;
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, #f0f4ff, #fff);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .panel-heading {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  .panel-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4b5563;
+    margin-bottom: 3rem;
+  }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-card {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 2rem;
+    width: 260px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
+  }
+
+  .tab-card:hover {
+    transform: scale(1.05);
+    border-color: #6366f1;
+    background-color: #f3f4f6;
+  }
+
+  .tab-card.active {
+    border-color: #4f46e5;
+    background-color: #eef2ff;
+  }
+
+  .tab-card h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #111827;
+  }
+
+  .tab-card p {
+    font-size: 1rem;
+    color: #4b5563;
+  }
+
+  .tab-icon {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 0.5rem;
+  }
+
+  .tab-content {
+    margin-top: 3rem;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .tab-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    text-align: center;
+  }
+
+  .ai-bubbles {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ai-bubbles li {
+    background: #f9fafb;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .ai-bubbles li strong {
+    color: #4f46e5;
+  }
+
+  .bg-blob {
+    position: absolute;
+    top: -100px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at center, #c7d2fe, #eef2ff);
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.7;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

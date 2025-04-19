@@ -7,44 +7,125 @@ const posts = [
     excerpt: "Learn the strategies that helped toppers clear UPSC prelims in their very first attempt.",
     date: "May 15, 2023",
     category: "UPSC",
-    readTime: "8 min read"
+    readTime: "8 min read",
+    image: "/images/blog1.jpg"
   },
   {
     title: "SSC CGL Tier-2 Preparation Guide",
     excerpt: "Comprehensive preparation strategy for the quantitative aptitude and English sections.",
     date: "April 28, 2023",
     category: "SSC",
-    readTime: "6 min read"
+    readTime: "6 min read",
+    image: "/images/blog2.jpg"
   },
   {
     title: "Current Affairs Preparation for Banking Exams",
     excerpt: "How to effectively prepare for current affairs section in IBPS and SBI exams.",
     date: "April 10, 2023",
-    category: "Banking",
-    readTime: "5 min read"
+    category: "Banking", // Assuming 'PO' and 'Clerk' fall under 'Banking' or similar
+    readTime: "5 min read",
+    image: "/images/blog3.jpg"
   },
   {
     title: "Time Management Tips for Government Exams",
     excerpt: "Proven techniques to maximize your study efficiency and exam performance.",
     date: "March 22, 2023",
     category: "General",
-    readTime: "7 min read"
+    readTime: "7 min read",
+    image: "/images/blog4.jpg"
   },
   {
     title: "State PSC Interview Preparation Guide",
     excerpt: "What to expect and how to prepare for state public service commission interviews.",
     date: "March 5, 2023",
     category: "State PSC",
-    readTime: "10 min read"
+    readTime: "10 min read",
+    image: "/images/blog5.jpg"
   },
   {
     title: "Best Books for RBI Grade B Preparation",
     excerpt: "Recommended books and resources for each section of the RBI Grade B exam.",
     date: "February 18, 2023",
-    category: "Banking",
-    readTime: "9 min read"
-  }
+    category: "Banking", // Assuming 'PO' and 'Clerk' fall under 'Banking' or similar
+    readTime: "9 min read",
+    image: "/images/blog6.jpg"
+  },
+  // Add more posts with specific categories like 'PO', 'Clerk', 'NTPC', 'Railways', 'Class 10'
+  {
+    title: "Strategy for IBPS PO Prelims",
+    excerpt: "Detailed guide to crack the IBPS PO preliminary examination.",
+    date: "June 1, 2023",
+    category: "PO",
+    readTime: "7 min read",
+    image: "/images/blog7.jpg" // Placeholder image
+  },
+  {
+    title: "How to Prepare for SSC CGL Quantitative Aptitude",
+    excerpt: "Tips and tricks for mastering the quantitative section of SSC CGL.",
+    date: "June 5, 2023",
+    category: "SSC",
+    readTime: "6 min read",
+    image: "/images/blog8.jpg" // Placeholder image
+  },
+  {
+    title: "NTPc Exam Pattern and Syllabus",
+    excerpt: "Understand the structure and topics for the NTPC recruitment exam.",
+    date: "June 10, 2023",
+    category: "NTPC",
+    readTime: "5 min read",
+    image: "/images/blog9.jpg" // Placeholder image
+  },
+   {
+    title: "Railway Group D Preparation Tips",
+    excerpt: "Essential tips for preparing for the Railway Group D examination.",
+    date: "June 15, 2023",
+    category: "Railways",
+    readTime: "6 min read",
+    image: "/images/blog10.jpg" // Placeholder image
+  },
+   {
+    title: "Class 10 Board Exam Study Plan",
+    excerpt: "A structured study plan to ace your Class 10 board exams.",
+    date: "June 20, 2023",
+    category: "Class 10",
+    readTime: "8 min read",
+    image: "/images/blog11.jpg" // Placeholder image
+  },
+   {
+    title: "Interview Tips for Government Jobs",
+    excerpt: "General tips applicable to various government job interviews.",
+    date: "June 25, 2023",
+    category: "Others",
+    readTime: "7 min read",
+    image: "/images/blog12.jpg" // Placeholder image
+  },
+   {
+    title: "IBPS Clerk Prelims Strategy",
+    excerpt: "How to effectively prepare for the IBPS Clerk preliminary examination.",
+    date: "July 1, 2023",
+    category: "Clerk",
+    readTime: "6 min read",
+    image: "/images/blog13.jpg" // Placeholder image
+  },
 ];
+
+// Ensure topics match the categories used in posts, including 'All'
+const topics = ["All", "SSC", "PO", "Clerk", "NTPC", "Railways", "Class 10", "Others", "UPSC", "Banking", "State PSC", "General"];
+
+const url = new URL(Astro.request.url);
+const selectedTopic = url.searchParams.get('topic') || 'All';
+
+// Filter posts based on the selected topic
+const filteredPosts = selectedTopic === 'All'
+  ? posts
+  : posts.filter(post => post.category.toLowerCase() === selectedTopic.toLowerCase());
+
+// Log for debugging
+console.log(`Selected Topic: ${selectedTopic}`);
+console.log(`Number of filtered posts: ${filteredPosts.length}`);
+if (filteredPosts.length > 0) {
+  console.log("First filtered post category:", filteredPosts[0].category);
+}
 ---
 
 <Layout title="Blog | ExamPrep India">
@@ -58,21 +139,41 @@ const posts = [
 
     <section class="blog-content">
       <div class="container">
+        <div class="topics-container">
+          <h3>Browse by Topic</h3>
+          <div class="topics-scroll">
+            {topics.map(topic => (
+              <a href={`?topic=${topic}`} class={`topic-btn ${topic.toLowerCase() === selectedTopic.toLowerCase() ? 'active' : ''}`}>
+                {topic}
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div class="blog-grid">
-          {posts.map(post => (
+          {filteredPosts.map(post => (
             <article class="post-card">
-              <div class="post-meta">
-                <span class="category">{post.category}</span>
-                <span class="date">{post.date}</span>
-              </div>
-              <h2>{post.title}</h2>
-              <p class="excerpt">{post.excerpt}</p>
-              <div class="post-footer">
-                <span class="read-time">{post.readTime}</span>
-                <a href="#" class="read-more">Read More →</a>
+              <div class="post-image" style={`background-image: url(${post.image})`}></div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span class="category">{post.category}</span>
+                  <span class="date">{post.date}</span>
+                </div>
+                <h2>{post.title}</h2>
+                <p class="excerpt">{post.excerpt}</p>
+                <div class="post-footer">
+                  <span class="read-time">{post.readTime}</span>
+                  <a href="#" class="read-more">Read More →</a>
+                </div>
               </div>
             </article>
           ))}
+          {filteredPosts.length === 0 && (
+            <article class="post-card empty">
+              <h2>No posts found for this topic</h2>
+              <p class="excerpt">Please select another topic or check back later for new content.</p>
+            </article>
+          )}
         </div>
       </div>
     </section>
@@ -80,28 +181,99 @@ const posts = [
 </Layout>
 
 <style>
+  /* Add or update the --primary-light variable if not already defined in your global styles */
+  :root {
+    --primary: 33, 150, 243; /* Example blue */
+    --primary-dark: 25, 118, 210; /* Example darker blue */
+    --primary-light: 100, 181, 246; /* Example lighter blue */
+    --gradient: linear-gradient(135deg, rgb(var(--primary-light)), rgb(var(--primary))); /* Example gradient */
+  }
+
   .blog-hero {
-    background: var(--gradient);
-    padding: 5rem 0;
-    color: white;
+    background: linear-gradient(135deg, rgba(var(--primary), 0.9), rgba(var(--primary-dark), 0.9));
+    padding: 6rem 0 4rem;
     text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
   }
 
-  .blog-hero h1 span {
-    background: white;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
+  .blog-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideInLeft 0.8s ease-out;
   }
 
-  .subtitle {
+  .blog-hero span {
+    color: rgb(var(--primary-light));
+  }
+
+  .blog-hero .subtitle {
     font-size: 1.2rem;
     opacity: 0.9;
+    animation: slideInRight 0.8s ease-out;
   }
 
   .blog-content {
     padding: 4rem 0;
+  }
+
+  .topics-container {
+    margin-bottom: 3rem;
+  }
+
+  .topics-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--primary-light));
+  }
+
+  .topics-scroll {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    /* Add scrollbar styling if needed */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--primary-light), 0.5) transparent;
+  }
+
+  .topics-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .topics-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .topics-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--primary-light), 0.5);
+    border-radius: 4px;
+  }
+
+
+  .topic-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Ensure it looks like a button, not a link */
+    display: inline-block; /* Ensure padding works correctly */
+  }
+
+  .topic-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Style for the active topic button */
+  .topic-btn.active {
+    background: var(--gradient); /* Use the gradient for the active state */
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--primary), 0.3);
+    font-weight: 600; /* Make active text bolder */
   }
 
   .blog-grid {
@@ -111,17 +283,27 @@ const posts = [
   }
 
   .post-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
-    padding: 1.5rem;
-    transition: var(--transition);
+    overflow: hidden;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .post-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .post-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .post-content {
+    padding: 1.5rem;
   }
 
   .post-meta {
@@ -132,33 +314,26 @@ const posts = [
     opacity: 0.8;
   }
 
-  .category {
-    background: rgba(var(--primary), 0.2);
-    color: rgb(var(--primary-light));
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-  }
-
   .post-card h2 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
-    line-height: 1.4;
+    color: white;
   }
 
   .excerpt {
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
     opacity: 0.8;
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
   .post-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
   }
 
   .read-time {
+    font-size: 0.9rem;
     opacity: 0.7;
   }
 
@@ -166,10 +341,38 @@ const posts = [
     color: rgb(var(--primary-light));
     text-decoration: none;
     font-weight: 500;
-    transition: var(--transition);
+    transition: all 0.3s ease;
   }
 
   .read-more:hover {
-    color: white;
+    opacity: 0.8;
+  }
+
+  .post-card.empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .post-card.empty h2 {
+    color: rgb(var(--primary-light));
+    margin-bottom: 1rem;
+  }
+
+  .post-card.empty .excerpt {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 </style>
